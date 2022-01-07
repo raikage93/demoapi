@@ -8,9 +8,10 @@ admin.initializeApp({
   databaseURL: "https://fir-api-3453f-default-rtdb.asia-southeast1.firebasedatabase.app"
 });
 const express = require('express');
+const authMiddleware = require('./authMiddleware');
 const app = express();
 const db = admin.firestore();
-
+app.use(authMiddleware);
 const cors = require('cors');
 app.use(cors({origin: true}));
 
